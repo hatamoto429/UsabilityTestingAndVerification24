@@ -1,0 +1,17 @@
+{
+    "dependencies": {
+      "jest": "^29.7.0",
+      "selenium-webdriver": "^4.18.1"
+    },
+    "name": "nodejs",
+    "version": "1.0.0",
+    "main": "1_Function.js",
+    "scripts": {
+      "test": "jest"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": ""
+  }
+  
