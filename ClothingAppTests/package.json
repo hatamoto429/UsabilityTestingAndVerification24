@@ -1,0 +1,44 @@
+{
+  "name": "react-router-v6",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "json-server": "^1.0.0-alpha.23",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.8.2",
+    "react-scripts": "5.0.0"
+  },
+  "scripts": {
+    "start": "concurrently -n 'React,DB' -c 'yellow.bold,cyan.bold' \"npm run start:react\" \"npm run start:db\"",
+    "start:react": "react-scripts start",
+    "start:db": "npx json-server db.json --port 3001",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
+    "enzyme": "^3.11.0",
+    "jest": "^27.5.1"
+  }
+}
