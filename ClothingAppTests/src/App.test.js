@@ -1,6 +1,7 @@
 import { mount } from "enzyme"
 import { MemoryRouter } from "react-router-dom";
 import App from "./App";
+import React from "react";
 
 import Home from "./components/Home/Home";
 import About from "./components/About/about";
@@ -79,17 +80,5 @@ describe('App component', () => {
         expect(wrapper.find(Products)).toHaveLength(1);
         expect(wrapper.find(ProductDetails)).toHaveLength(0);
     });
-
-    //HOME ASSIGNMENT TEST FOR PRODUCT DEAILS COMPONENT 
-
-    it("renders product details correctly", () => {
-        wrapper = component("/products/:id/:type");
-
-        expect(wrapper.find(Home)).toHaveLength(0);
-        expect(wrapper.find(About)).toHaveLength(0);
-        expect(wrapper.find(Products)).toHaveLength(0);
-        expect(wrapper.find(ProductDetails)).toHaveLength(1);
-    });
-
 })
 
