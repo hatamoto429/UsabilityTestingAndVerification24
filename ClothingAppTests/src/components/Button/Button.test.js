@@ -1,21 +1,53 @@
-import Button from "./Button/Buttton"
+import Button from "./Button";
+import { shallow } from "enzyme";
+
+
+const mockHandleLogin = jest.fn()
+    .mockImplementation(() => {
+        setLoading(true);
+        setTimeout(() => {
+            setLogin(!loggedIn);
+            setLoading(false);
+        }, 2000);
+    })
 
 describe("Button Component", () => {
-    it("is rendered", () => {
+    let wrapper = null;
 
+    beforeEach(() => {
+        wrapper = shallow(<Button />)
     })
-    it("is rendered correctly according to the propds : 1", () => {
-        //Button takes some props
-        //Assuimg that the isLoading is true
-        //Loader to be shown on the screen
-        let prop1 = {
-            value: "",
-            handleLogin: "",
-            isLoading: "",
-            displayTrue: "",
-            displayFalse: "",
-        };
+
+    it("Button is rendered", () => {
+        const button = wrapper;
+        expect(button.exists()).toBe(true)
     });
 
-    it("is rendered correctly according to the propds : 1", () => {});
+    it('Testing for props if is loading true', () => {
+        const props = {
+            value: "loggedIn",
+            handleLogin: mockHandleLogin,
+            isLoading: true,
+            displayTrue: "Logout",
+            displayFalse: "Login",
+        }
+
+        wrapper = shallow(<Button {...props} />);
+        expect(wrapper.find('value')).toBe('Login');
+    })
+
+    it('Testing for props if is loading is false', () => {
+        /*
+        const props = {
+            value: "loggedIn",
+            handleLogin: mockHandleLogin,
+            isLoading: false,
+            displayTrue: "Logout",
+            displayFalse: "Login",
+        }
+
+        wrapper = shallow(<Button {...props} />);
+        expect(wrapper.find('button').prop('value')).toBe("loggedIn");
+        */
+    })
 });
