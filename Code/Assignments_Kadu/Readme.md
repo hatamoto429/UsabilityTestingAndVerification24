@@ -1,1 +1,2 @@
-Assignment 4 - Clothing App Tests in subfolder ClothingAppTests!
+
+    Assignment 4, Clothing App Tests found inside the subfolder ClothingAppTests!

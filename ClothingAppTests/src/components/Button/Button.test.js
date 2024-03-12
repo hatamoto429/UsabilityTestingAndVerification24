@@ -1,53 +1,40 @@
 import Button from "./Button";
+import React from "react";
 import { shallow } from "enzyme";
 
-
-const mockHandleLogin = jest.fn()
-    .mockImplementation(() => {
-        setLoading(true);
-        setTimeout(() => {
-            setLogin(!loggedIn);
-            setLoading(false);
-        }, 2000);
-    })
+// Home Assignment 4, Kadu 
 
 describe("Button Component", () => {
-    let wrapper = null;
-
-    beforeEach(() => {
-        wrapper = shallow(<Button />)
-    })
-
     it("Button is rendered", () => {
-        const button = wrapper;
-        expect(button.exists()).toBe(true)
+        const wrapper = shallow(<Button />);
+        expect(wrapper.exists()).toBe(true);
     });
 
-    it('Testing for props if is loading true', () => {
+    it('Testing for props if isLoading is true', () => {
         const props = {
-            value: "loggedIn",
-            handleLogin: mockHandleLogin,
+            value: "Login",
+            handleLogin: jest.fn(),
             isLoading: true,
-            displayTrue: "Logout",
+            displayTrue: "Logged In",
             displayFalse: "Login",
-        }
-
-        wrapper = shallow(<Button {...props} />);
-        expect(wrapper.find('value')).toBe('Login');
+        };
+        const wrapper = shallow(<Button {...props} />);
+        expect(wrapper.find('Loader').exists()).toBe(true);
+        expect(wrapper.find('button').hasClass('login')).toBe(true);
+        expect(typeof props.handleLogin).toBe('function');
     })
 
-    it('Testing for props if is loading is false', () => {
-        /*
+    it('Testing for props if isLoading is false', () => {
         const props = {
-            value: "loggedIn",
-            handleLogin: mockHandleLogin,
-            isLoading: false,
-            displayTrue: "Logout",
+            value: "Logout",
+            handleLogin: jest.fn(),
+            isLoading: true,
+            displayTrue: "Logged In",
             displayFalse: "Login",
-        }
-
-        wrapper = shallow(<Button {...props} />);
-        expect(wrapper.find('button').prop('value')).toBe("loggedIn");
-        */
+        };
+        const wrapper = shallow(<Button {...props} />);
+        expect(wrapper.find('Loader').exists()).toBe(true);
+        expect(wrapper.find('button').hasClass('login')).toBe(true);
+        expect(typeof props.handleLogin).toBe('function');
     })
 });
